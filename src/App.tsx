@@ -1,4 +1,5 @@
-import Layout from "./components/Layout"
+import Layout from "./app-layouts/Layout"
+
 
 function App() {
 

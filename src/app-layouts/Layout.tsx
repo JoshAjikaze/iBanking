@@ -5,19 +5,12 @@ import AboutPage from './components/AboutPage'
 import ContactPage from './components/ContactPage'
 import Sidebar from './components/Sidebar'
 import Header from './components/Header'
+import FooterComponent from './components/Footer'
 
-const Menu = () => {
-  return (
-    <section className='absolute right-5 top-12 bg-white min-h-[300px] w-[200px] z-[51] flex flex-col items-center'>
-      <div>Account</div>
-      <div>Settings</div>
-    </section>
-  )
-}
-
-const Layout = ( props:any) => {
+const Layout = (props: any) => {
   const [sidebarToggle, setSidebarToggle] = useState(false);
   const [sidebarShrink, setSidebarShrink] = useState(false);
+  
 
   const handleToggle = () => {
     setSidebarToggle(!sidebarToggle)
@@ -29,27 +22,31 @@ const Layout = ( props:any) => {
     console.log(sidebarShrink)
   }
 
+  
+
   return (
-    <div className='relative flex'>
-
-      <div className={` ${sidebarToggle || sidebarShrink ? 'w-full' : 'w-[82%]'} ${ sidebarShrink ? 'w-[96%]' : ''}  absolute right-0 p-[2px] z-50 flex items-center justify-center bg-white shadow-md`}>
-        <span className='w-[30px] h-[30px] cursor-pointer text-center font-bold text-white bg-gray-600' onClick={handleToggle}></span>
-        <Header />
-      </div>
-
-      {/* ${sidebarShrink ?  'w-[95%]' : 'md:w-[82%]'} */}
-
-      <Menu />
-
-      <div className={` ${sidebarToggle ? 'hidden' : 'left-0 w-full md:w-[18%]'} ${sidebarShrink ?  'md:w-[4%] hover:w-[18%] delay-100 duration-500 transition-all' : 'md:w-[18%]'} group relative flex flex-col md:fixed z-50 min-h-screen bg-green-800 transition delay-150`}>
-        <span className='lg:hidden w-[50px] h-[50px] cursor-pointer text-center font-bold text-white bg-gray-600' onClick={handleToggle}></span>
-        <Sidebar />
-        <button onClick={handleShrink} className={` ${ sidebarShrink ? 'text-sm' : ''} absolute bottom-0 w-full bg-green-700 p-3 text-white`}>Shrink</button>
-      </div>
+    <div className='relative flex min-h-screen'>
 
       
 
-      <div className={` ${sidebarToggle || sidebarShrink ? 'w-full' : 'w-[82%]'} ${ sidebarShrink ? 'w-[96%]' : ''} absolute z-40 min-h-screen right-0 bg-blue`}>
+      {/* container for the header component */}
+      <div className={` ${sidebarToggle || sidebarShrink ? 'w-full' : 'w-[82%]'} ${sidebarShrink ? 'w-[96%]' : ''}  absolute right-0 p-[2px] z-50 flex items-center justify-center bg-white  dark:bg-gray-900 dark:text-white shadow-md`}>
+        <span className='w-[30px] h-[30px] cursor-pointer text-center font-bold' onClick={handleToggle}>&#9776;</span>
+        <Header />
+      </div>
+
+      {/* Container for the sidebar component */}
+      <div className={` ${sidebarToggle ? 'hidden' : 'left-0 w-full md:w-[18%]'} ${sidebarShrink ? 'md:w-[4%] hover:w-[18%]' : 'md:w-[18%]'} group relative flex flex-col md:fixed z-50 min-h-screen bg-green-800 dark:bg-gray-900 transition ease-in-out delay-150`}>
+        <span className='absolute lg:hidden w-[50px] h-[50px] cursor-pointer text-center font-bold text-white' onClick={handleToggle}>&#10006;</span>
+        <Sidebar />
+        <button onClick={handleShrink} className={` ${sidebarShrink ? 'text-sm' : ''} absolute hidden md:block bottom-0 w-full p-3 pr-5 text-white text-right`}>
+          {sidebarShrink ? <span>&#10095;</span> : <span>&#10094;</span>}
+        </button>
+      </div>
+
+
+      {/* Container for the main component */}
+      <div className={` ${sidebarToggle || sidebarShrink ? 'w-full' : 'w-[82%]'} ${sidebarShrink ? 'w-[96%]' : ''} absolute z-40 min-h-screen right-0 bg-blue`}>
         <Routes>
           <Route path="/" index element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -57,8 +54,11 @@ const Layout = ( props:any) => {
         </Routes>
       </div>
 
-      {/* ${sidebarShrink ? 'w-[95%]' : 'w-[82%]'} */}
-      
+      {/* Container for the footer component */}
+      <div className={` ${sidebarToggle || sidebarShrink ? 'w-full' : 'w-[82%]'} ${sidebarShrink ? 'w-[96%]' : ''} absolute bottom-0 right-0  z-40 flex items-center justify-center shadow-md`}>
+        <FooterComponent />
+      </div>
+
     </div>
   )
 }

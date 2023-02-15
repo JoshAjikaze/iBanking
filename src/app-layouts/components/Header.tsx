@@ -4,26 +4,15 @@ import sun from '../../app-icons/sun.svg'
 import account from '../../app-icons/account_circle.svg'
 import account_black from '../../app-icons/account_circle_black.svg'
 
-const Menu = () => {
-    return (
-        <section className='absolute right-5 top-12 bg-white dark:bg-gray-900 text-black dark:text-white text-3xl text-center font-bold min-h-[300px] w-[200px] z-[51] flex flex-col items-center justify-center shadow-2xl'>
-            <div>Some Stuff Goes Here!</div>
-        </section>
-    )
-}
-
 const Header = () => {
+    const [toggleMenu, setToggleMenu] = useState<boolean>(false)
+    console.log(toggleMenu, 'Toggle Menu State')
     const [darkMode, setDarkMode] = useState<boolean | undefined>(undefined);
-    const [showMenu, setShowMenu] = useState<boolean>(false)
 
     const switchMode = () => {
         setDarkMode(!darkMode)
     }
 
-    const showHiddenMenu = () => {
-        setShowMenu(!showMenu)
-        alert("clicked")
-    }
 
     useEffect(() => {
         if (darkMode) {
@@ -36,6 +25,7 @@ const Header = () => {
             setDarkMode(localStorage.getItem("darkMode") === "true");
         }
     }, [darkMode])
+
     return (
         <section className="relative flex justify-end w-full p-2">
             <div className='relative right-0 flex items-center gap-x-5 justify-end w-2/4'>
@@ -48,14 +38,15 @@ const Header = () => {
                         <span className='text-xl font-bold animate-bounce'>User</span>
                     </p>
 
-                    {darkMode ? <img src={account} alt="" className='w-[35px] cursor-pointer' /> : <img src={account_black} alt="" className='w-[35px] cursor-pointer' onClick={() => showHiddenMenu()} />}
-
+                    {darkMode ? <img src={account} alt="" className='w-[35px] cursor-pointer hover:rotate-180 hover:scale-75 hover:duration-300' /> : <img src={account_black} alt="" className='w-[35px] cursor-pointer' />}
+                    <button onClick={() => setToggleMenu(!toggleMenu) }>menu</button>
                 </div>
             </div>
 
-            
-                { showMenu ? null : <Menu /> }
-            
+            <section className={`${ toggleMenu ? '' : 'hidden'} absolute right-5 top-12 bg-white dark:bg-gray-900 text-black dark:text-white text-3xl text-center font-bold min-h-[300px] w-[200px] z-[51] flex flex-col items-center justify-center shadow-2xl`}>
+                <div>Some Stuff Goes Here!</div>
+            </section>
+
         </section>
     )
 }

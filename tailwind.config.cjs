@@ -6,7 +6,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        iBankingGreen: '#477E5B',
+      }
+    },
   },
   plugins: [],
 }

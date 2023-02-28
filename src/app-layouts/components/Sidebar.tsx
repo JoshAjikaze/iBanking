@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../../app-redux/store";
-import user from '../../app-icons/person.svg'
+import user from '../../app-icons/person.png'
 import icon from '../../app-icons/save.svg'
-
+import key from '../../app-icons/key.svg'
 
 const LinkTemp = (props: any) => {
     const toggle = useSelector((state: RootState) => state.counter.value)
@@ -28,7 +28,7 @@ const Sidebar = () => {
             </div>
             <div>
                 <LinkTemp link="/" name="Admin User Management" image={user} />
-                <LinkTemp link="/contact" name="Placeholder Text" image={icon} />
+                <LinkTemp link="/contact" name="Role Management" image={key} />
                 <LinkTemp link="/" name="Placeholder Text" image={icon} />
                 <LinkTemp link="/about" name="Placeholder Text" image={icon} />
                 <LinkTemp link="/contact" name="Placeholder Text" image={icon} />

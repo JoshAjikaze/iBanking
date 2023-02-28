@@ -4,7 +4,7 @@ import Layout from "./app-layouts/Layout"
 function App() {
 
   return (
-    <div className="App">
+    <div className="bg-white">
       <Layout />
     </div>
   )

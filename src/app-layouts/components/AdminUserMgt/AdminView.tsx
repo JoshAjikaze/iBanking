@@ -3,6 +3,9 @@ import * as Yup from 'yup'
 import { FormikValues, FormikHelpers } from 'formik/dist/types'
 import user from "../../../app-icons/person.svg"
 import reset from "../../../app-icons/reset.svg"
+import deactivate from "../../../app-icons/deactivate.svg"
+import view from "../../../app-icons/view.svg"
+
 
 const onSubmit = (values: any) => {
     console.log(values);
@@ -78,15 +81,29 @@ const AdminView = () => {
                                 <Field type="select" name="role" id="role" className="border p-2 px-5 bg-transparent dark:text-white focus:outline-none" />
                                 <p className='animate-bounce mt-3'><ErrorMessage name='role' /></p>
                             </p>
+
+                            <p className='col-span-2 md:col-span-1 flex flex-col'>
+                                <label htmlFor="role" className='mb-3 text-iBankingDarkGreen dark:text-white'>Status</label>
+                                <p className='p-2 flex justify-between md:w-[110px] border'>
+                                    <p>
+                                        <img src={deactivate} alt="" />
+                                    </p>
+                                    <p>Inactive</p>
+                                </p>
+                            </p>
                         </div>
                         <div className='flex justify-between p-1 '>
                             <button className='group flex border rounded bg-white p-2 px-3 space-x-3 text-[12px] font-semibold text-iBankingDarkGreen'>
-                                <p className='rotate-45 group-hover:animate-[spin_.1s_ease-in-out_infinite]'>&#10010;</p>
+                                <p className='group-hover:animate-[spin_2s_ease-in-out_infinite]'>
+                                    <img src={reset} alt="" />
+                                </p>
                                 <span>CANCEL</span>
                             </button>
-                            <button className='rounded bg-iBankingDarkGreen p-2 px-3 space-x-3 text-[12px] font-semibold text-white' type="submit">
-                                <span>&#10010;</span>
-                                <span>ADD USER</span>
+                            <button className='group rounded bg-gray-300 p-2 px-3 space-x-3 text-[12px] font-semibold text-white flex items-center border border-iBankingLightGreen' type="submit">
+                                <p>
+                                    <img src={view} alt="" className='group-hover:animate-ping' />
+                                </p>
+                                <p>VIEW</p>
                             </button>
                         </div>
                     </Form>

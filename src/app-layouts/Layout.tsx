@@ -75,7 +75,7 @@ const Layout = (props: any) => {
       {/* Container for the main component */}
       <div className={` ${sidebarToggle || sidebarShrink ? 'w-full' : 'w-[82%]'} ${sidebarShrink ? 'w-[96%]' : ''} absolute z-40 min-h-screen right-0 bg-blue flex items-center justify-center`}>
         <Routes>
-          
+
           <Route path="admin" element={<AdminUserMgt />}>
             <Route path="home" element={<AdminCreate />} />
             <Route path="create" element={<AdminCreate />} />

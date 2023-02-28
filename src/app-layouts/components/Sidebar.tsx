@@ -29,7 +29,7 @@ const Sidebar = () => {
             <div>
                 <LinkTemp link="/admin" name="Admin User Management" image={user} />
                 <LinkTemp link="/contact" name="Role Management" image={key} />
-                <LinkTemp link="/" name="Placeholder Text" image={icon} />
+                <LinkTemp link="/joshua" name="Placeholder Text" image={icon} />
                 <LinkTemp link="/about" name="Placeholder Text" image={icon} />
                 <LinkTemp link="/contact" name="Placeholder Text" image={icon} />
             </div>

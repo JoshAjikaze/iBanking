@@ -57,8 +57,8 @@ const AdminCreate = () => {
                                 <p className='rotate-45 group-hover:animate-[spin_.1s_ease-in-out_infinite]'>&#10010;</p>
                                 <span>CANCEL</span>
                             </button>
-                            <button className='rounded bg-iBankingDarkGreen p-2 px-3 space-x-3 text-[12px] font-semibold text-white' type="submit">
-                                <span>&#10010;</span>
+                            <button className='group rounded bg-iBankingDarkGreen p-2 px-3 space-x-3 text-[12px] font-semibold text-white' type="submit">
+                                <span className='group-hover:animate-ping'>&#10010;</span>
                                 <span>ADD USER</span>
                             </button>
                         </div>

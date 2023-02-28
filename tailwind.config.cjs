@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       colors: {
         iBankingGreen: '#477E5B',
+        iBankingDarkGreen: '#1A5131',
+        iBankingBgLight: '#E5E5E5',
       }
     },
   },

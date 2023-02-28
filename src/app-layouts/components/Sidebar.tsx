@@ -27,7 +27,7 @@ const Sidebar = () => {
                 <p className="">{ toggle ? <span>&#9731;</span> : <span>iBanking</span> }</p>
             </div>
             <div>
-                <LinkTemp link="/" name="Admin User Management" image={user} />
+                <LinkTemp link="/admin" name="Admin User Management" image={user} />
                 <LinkTemp link="/contact" name="Role Management" image={key} />
                 <LinkTemp link="/" name="Placeholder Text" image={icon} />
                 <LinkTemp link="/about" name="Placeholder Text" image={icon} />

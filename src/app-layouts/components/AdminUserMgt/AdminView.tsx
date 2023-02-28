@@ -13,17 +13,20 @@ const onSubmit = (values: any) => {
 
 const formSchema = Yup.object({
     name: Yup.string().required('This Is A Required Field!'),
-    role: Yup.string().required('This Is A Required Field!')
+    role: Yup.string().required('This Is A Required Field!'),
+    fullName: Yup.string().required('This Is A Required Field!'),
+    startDate: Yup.date().required('This Is A Required Field!'),
+    endDate:Yup.date().required('This Is A Required Field!')
 })
 
-const AdminCreate = () => {
+const AdminView = () => {
     return (
         <section className='divide-y-2 p-1'>
             <div>
                 <div className='grid grid-cols-2 items-center justify-center p-2'>
                     <p className='col-span-1 flex gap-x-3 py-1'>
                         <img src={user} alt="" className='w-5' />
-                        <span className='col-span-1 text-lg font-medium text-iBankingDarkGreen dark:text-white'>ADD NEW ADMIN USER</span>
+                        <span className='col-span-1 text-lg font-medium text-iBankingDarkGreen dark:text-white'>VIEW ADMIN USER</span>
                     </p>
                     <p className='flex justify-end'>
                         <img src={reset} alt="" className='w-5' />
@@ -37,18 +40,42 @@ const AdminCreate = () => {
                         <div className='grid grid-cols-2 gap-10 justify-between'>
                             <p className='col-span-2 md:col-span-1 flex flex-col'>
                                 <label htmlFor="name" className='mb-3 text-iBankingDarkGreen dark:text-white'>Username</label>
-                                <p  className="border flex items-center pl-3" >
+                                <p className="border flex items-center pl-3" >
                                     <span>
                                         <img src={user} alt="" />
                                     </span>
-                                    <Field type="text" name="name" id="name" className="w-full p-2 px-5 bg-transparent dark:text-white focus:outline-none"/>
+                                    <Field type="text" name="name" id="name" className="w-full p-2 px-5 bg-transparent dark:text-white focus:outline-none" />
                                 </p>
                                 <p className='animate-bounce mt-3'><ErrorMessage name='name' /></p>
                             </p>
 
                             <p className='col-span-2 md:col-span-1 flex flex-col'>
-                                <label htmlFor="name" className='mb-3 text-iBankingDarkGreen dark:text-white'>Select Role</label>
-                                <Field type="text" name="role" id="role" className="border p-2 px-5 bg-transparent dark:text-white focus:outline-none" />
+                                <label htmlFor="fullName" className='mb-3 text-iBankingDarkGreen dark:text-white'>Full Name</label>
+                                <Field type="text" name="fullName" id="role" className="border p-2 px-5 bg-transparent dark:text-white focus:outline-none" />
+                                <p className='animate-bounce mt-3'><ErrorMessage name='fullName' /></p>
+                            </p>
+                        </div>
+
+                        <div className='grid grid-cols-2 gap-10 justify-between'>
+                            <p className='col-span-2 md:col-span-1 flex flex-col'>
+                                <label htmlFor="startDate" className='mb-3 text-iBankingDarkGreen dark:text-white'>From</label>
+                                <p className="border flex items-center pl-3" >
+                                    <Field type="date" name="startDate" id="name" className="w-full p-2 px-5 bg-transparent dark:text-white focus:outline-none" />
+                                </p>
+                                <p className='animate-bounce mt-3'><ErrorMessage name='startDate' /></p>
+                            </p>
+
+                            <p className='col-span-2 md:col-span-1 flex flex-col'>
+                                <label htmlFor="endDate" className='mb-3 text-iBankingDarkGreen dark:text-white'>To</label>
+                                <Field type="date" name="endDate" id="role" className="border p-2 px-5 bg-transparent dark:text-white focus:outline-none" />
+                                <p className='animate-bounce mt-3'><ErrorMessage name='endDate' /></p>
+                            </p>
+                        </div>
+
+                        <div className='grid grid-cols-2 gap-10 justify-between'>
+                            <p className='col-span-2 md:col-span-1 flex flex-col'>
+                                <label htmlFor="role" className='mb-3 text-iBankingDarkGreen dark:text-white'>Select Role</label>
+                                <Field type="select" name="role" id="role" className="border p-2 px-5 bg-transparent dark:text-white focus:outline-none" />
                                 <p className='animate-bounce mt-3'><ErrorMessage name='role' /></p>
                             </p>
                         </div>
@@ -70,4 +97,4 @@ const AdminCreate = () => {
     )
 }
 
-export default AdminCreate
+export default AdminView

@@ -14,6 +14,9 @@ import Sidebar from './components/Sidebar'
 import Header from './components/Header'
 import FooterComponent from './components/Footer'
 import AdminUserMgt from './components/AdminUserMgt/AdminUserMgt'
+import AdminCreate from './components/AdminUserMgt/AdminCreate'
+import AdminEdit from './components/AdminUserMgt/AdminEdit'
+import AdminView from './components/AdminUserMgt/AdminView'
 
 const Layout = (props: any) => {
   const [sidebarToggle, setSidebarToggle] = useState(false);
@@ -49,8 +52,8 @@ const Layout = (props: any) => {
       </div>
 
       {/* Container for the sidebar component */}
-      <div className={` ${sidebarToggle ? 'hidden' : 'left-0 w-full lg:w-[18%]'} ${sidebarShrink ? 'lg:w-[4%] hover:w-[18%]' : 'lg:w-[18%]'} group relative flex flex-col md:fixed z-50 min-h-screen bg-green-800 dark:bg-gray-900 transition ease-in-out delay-150`}>
-        
+      <div className={` ${sidebarToggle ? 'hidden' : 'left-0 w-full lg:w-[18%]'} ${sidebarShrink ? 'lg:w-[4%] hover:w-[18%]' : 'lg:w-[18%]'} group relative flex flex-col md:fixed z-50 min-h-screen bg-iBankingDarkGreen dark:bg-gray-900 transition ease-in-out delay-150`}>
+
         <span className='absolute right-0 top-4 z-50 lg:hidden w-[50px] h-[50px] cursor-pointer text-center font-bold text-white' onClick={handleToggle}>&#10006;</span>
 
         <Sidebar />
@@ -72,9 +75,24 @@ const Layout = (props: any) => {
       {/* Container for the main component */}
       <div className={` ${sidebarToggle || sidebarShrink ? 'w-full' : 'w-[82%]'} ${sidebarShrink ? 'w-[96%]' : ''} absolute z-40 min-h-screen right-0 bg-blue flex items-center justify-center`}>
         <Routes>
-          <Route path="/" index element={<AdminUserMgt />} />
+          
+          <Route path="admin" element={<AdminUserMgt />}>
+            <Route path="home" element={<AdminCreate />} />
+            <Route path="create" element={<AdminCreate />} />
+            <Route path="view" element={<AdminView />} />
+            <Route path="edit" element={<AdminEdit />} />
+          </Route>
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={
+            <div className='text-3xl text-center font-bold'>
+              <p className='flex'>
+                <p>This Page Is Not Available</p>
+                <p className='animate-spin text-5xl'>&#128521;</p>
+              </p>
+              <p className='text-lg'>Please Check Later </p>
+            </div>
+          } />
         </Routes>
       </div>
 

@@ -3,13 +3,9 @@ import { RootState } from '../app-redux/store'
 import { showSidebar, hideSidebar } from '../app-redux/togglers/sidebarToggler'
 
 import React, { useState } from 'react'
-import HomePage from './components/AdminUserMgt/AdminUserMgt'
 import { Routes, Route, Link } from 'react-router-dom'
 
 
-
-import AboutPage from './components/AboutPage'
-import ContactPage from './components/ContactPage'
 import Sidebar from './components/Sidebar'
 import Header from './components/Header'
 import FooterComponent from './components/Footer'
@@ -17,6 +13,7 @@ import AdminUserMgt from './components/AdminUserMgt/AdminUserMgt'
 import AdminCreate from './components/AdminUserMgt/AdminCreate'
 import AdminEdit from './components/AdminUserMgt/AdminEdit'
 import AdminView from './components/AdminUserMgt/AdminView'
+import AdminIndex from './components/AdminUserMgt/AdminIndex'
 
 const Layout = (props: any) => {
   const [sidebarToggle, setSidebarToggle] = useState(false);
@@ -46,7 +43,7 @@ const Layout = (props: any) => {
 
 
       {/* container for the header component */}
-      <div className={` ${sidebarToggle || sidebarShrink ? 'w-full' : 'w-[82%]'} ${sidebarShrink ? 'w-[96%]' : ''} fixed right-0 p-[2px] z-50 flex items-center justify-center bg-white  dark:bg-gray-900 dark:text-white shadow-md`}>
+      <div className={` ${sidebarToggle || sidebarShrink ? 'w-full' : 'w-[82%]'} ${sidebarShrink ? 'w-[96%]' : ''} fixed right-0 pr-10 md:pr-0 md:p-[2px] z-50 flex items-center justify-center bg-white  dark:bg-gray-900 dark:text-white shadow-md`}>
         <span className='w-[30px] h-[30px] cursor-pointer text-center font-bold' onClick={handleToggle}>&#9776;</span>
         <Header />
       </div>
@@ -77,13 +74,12 @@ const Layout = (props: any) => {
         <Routes>
 
           <Route path="admin" element={<AdminUserMgt />}>
-            <Route path="home" element={<AdminCreate />} />
+            <Route path="index" element={<AdminIndex />} />
             <Route path="create" element={<AdminCreate />} />
             <Route path="view" element={<AdminView />} />
             <Route path="edit" element={<AdminEdit />} />
           </Route>
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          {/* <Route path="/about" element={<AboutPage />} /> */}
           <Route path="*" element={
             <div className='text-3xl text-center font-bold'>
               <p className='flex'>

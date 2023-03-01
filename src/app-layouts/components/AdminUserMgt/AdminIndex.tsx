@@ -1,11 +1,11 @@
 import React, { useMemo } from "react";
 import { useTable } from "react-table";
-import { COLUMNS } from "./columns";
-import MOCK_DATA from "./MOCK_DATA.json";
-import './table.css'
+import { COLUMNS } from "../../../app-tables/columns";
+import MOCK_DATA from "../../../app-tables/MOCK_DATA.json";
+// import './table.css'
 
-const DataTable = () => {
-    const columns = useMemo(() => COLUMNS, []);
+const AdminIndex = () => {
+    const columns:any = useMemo(() => COLUMNS, []);
     const data = useMemo(() => MOCK_DATA, []);
 
     
@@ -17,13 +17,13 @@ const DataTable = () => {
 
     return (
         <div>
-            <table {...getTableBodyProps()}>
+            <table className="w-full" {...getTableBodyProps()}>
                 {/* Header of the table  */}
-                <thead>
+                <thead className="bg-iBankingDarkGreen">
                     {headerGroups.map((headerGroup) => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
+                        <tr  {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
-                                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                                <th className="p-3 text-white font-normal text-left" {...column.getHeaderProps()}>{column.render('Header')}</th>
                             ))}
                         </tr>
                     ))}
@@ -34,10 +34,10 @@ const DataTable = () => {
                         rows.map(row => {
                             prepareRow(row)
                             return (
-                                <tr {...row.getRowProps()}>
+                                <tr className="border-y-2 border-iBankingLightGreen text-xs" {...row.getRowProps()}>
                                     {row.cells.map((cell) => {
                                         return (
-                                            <td {...cell.getCellProps()}>
+                                            <td className="p-3" {...cell.getCellProps()}>
                                                 {cell.render('Cell')}
                                             </td>
                                         )
@@ -69,4 +69,4 @@ const DataTable = () => {
     );
 };
 
-export default DataTable;
+export default AdminIndex;

@@ -42,9 +42,9 @@ export const CommandBar: FunctionComponent<CommandBarProps> = (
     { creationUrl, viewUrl, editUrl, activationAction, deactivateAction }) => {
     return (
         <section className="mt-2 p-2 bg-white w-full dark:bg-gray-900 text-iBankingGreen dark:text-white flex justify-between">
-            <Link to={'create'}><BtnComponent name="Create" image={create} /></Link>
-            <Link to={'view'}><BtnComponent name="View" image={view} /></Link>
-            <Link to={'edit'}><BtnComponent name="Edit" image={edit} /></Link>
+            <Link to={creationUrl}><BtnComponent name="Create" image={create} /></Link>
+            <Link to={viewUrl}><BtnComponent name="View" image={view} /></Link>
+            <Link to={editUrl}><BtnComponent name="Edit" image={edit} /></Link>
             <BtnComponent name="Activate" image={activate} />
             <BtnComponent name="Deactivate" image={deactivate} />
             <BtnComponent image={search} />

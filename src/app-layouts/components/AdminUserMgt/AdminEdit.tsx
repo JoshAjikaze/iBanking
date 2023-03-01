@@ -35,7 +35,7 @@ const AdminEdit = () => {
             </div>
 
             <div className='pt-5 mb-5'>
-                <Formik initialValues={{ name: '', role: '' }} validationSchema={formSchema} onSubmit={onSubmit}>
+                <Formik initialValues={{ name: '', role: '', fullName: '' }} validationSchema={formSchema} onSubmit={onSubmit}>
                     <Form className='flex flex-col px-[40px] gap-y-5'>
                         <div className='grid grid-cols-2 gap-10 justify-between'>
                             <p className='col-span-2 md:col-span-1 flex flex-col'>

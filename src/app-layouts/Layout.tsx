@@ -84,7 +84,8 @@ const Layout = (props: any) => {
             <div className='text-3xl text-center font-bold'>
               <p className='flex'>
                 <p>This Page Is Not Available</p>
-                <p className='animate-spin text-5xl'>&#128521;</p>
+                {/* <p className='animate-spin text-5xl'>&#128527;</p> */}
+                <p className='animate-bounce text-5xl'>&#128521;</p>
               </p>
               <p className='text-lg'>Please Check Later </p>
             </div>

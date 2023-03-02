@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
-import { useTable, useSortBy } from "react-table";
+import { useTable, useSortBy, useGlobalFilter, usePagination, Row } from "react-table";
 import { COLUMNS } from "../../../app-tables/columns";
+import GlobalFilter from "../../../app-tables/GlobalFilter";
 import MOCK_DATA from "../../../app-tables/MOCK_DATA.json";
 // import './table.css'
 
@@ -10,16 +11,40 @@ const AdminIndex = () => {
 
 
 
-    const { getTableProps, getTableBodyProps, headerGroups, footerGroups, rows, prepareRow } =
-        useTable({
-            columns,
-            data,
-        },
-            useSortBy
-        );
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        footerGroups,
+        //@ts-ignore
+        page,
+        //@ts-ignore
+        nextPage,
+        //@ts-ignore
+        previousPage,
+        //@ts-ignore
+        canNextPage,
+        //@ts-ignore
+        canPreviousPage,
+        //@ts-ignore
+        pageOptions,
+        //@ts-ignore
+        gotoPage,
+        // @ts-ignore
+        setPageSize,
+        prepareRow,
+        state,
+        //@ts-ignore
+        setGlobalFilter
+    } = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination);
+
+    const { globalFilter, pageIndex, pageSize }: any = state
+
+    // console.log(pageOptions.length);
 
     return (
         <div>
+            <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
             <table className="w-full border-collapse" {...getTableBodyProps()}>
                 {/* Header of the table  */}
                 <thead className="bg-iBankingDarkGreen">
@@ -51,10 +76,10 @@ const AdminIndex = () => {
                 {/* content of the table */}
                 <tbody {...getTableBodyProps()}>
                     {
-                        rows.map(row => {
+                        page.map((row: Row<{ id: number; fullName: string; userName: string; role: string; email: string; status: null; }>) => {
                             prepareRow(row)
                             return (
-                                <tr className="border-y-2 border-iBankingLightGreen dark:border-gray-600 text-xs dark:text-white hover:font-semibold hover:bg-iBankingGreen hover:text-white hover:scale-105 dark:hover:text-black" {...row.getRowProps()}>
+                                <tr className="border-y-2 border-iBankingLightGreen dark:border-gray-600 text-xs dark:text-white hover:font-semibold hover:bg-iBankingGreen hover:text-white dark:hover:text-black" {...row.getRowProps()}>
                                     {row.cells.map((cell) => {
                                         return (
                                             <td className="p-3" {...cell.getCellProps()}>
@@ -67,24 +92,38 @@ const AdminIndex = () => {
                         })
                     }
                 </tbody>
-                {/* footer of the table */}
-                <tfoot>
-                    {footerGroups.map(footerGroup => (
-                        <tr {...footerGroup.getFooterGroupProps()}>
-                            {
-                                footerGroup.headers.map(column => (
-                                    <td {...column.getFooterProps()}>
-                                        {
-                                            column.render('Footer')
-                                        }
-                                    </td>
-                                ))
-                            }
-                        </tr>
-                    ))}
-                </tfoot>
             </table>
-            <img src="" alt="" />
+
+            <div className="flex items-center justify-between bg-[#477e5b98]">
+                <div className="pl-3">
+                    <select value={pageSize} onChange={e => setPageSize(Number(e.target.value))} className="bg-transparent font-bold">
+                        {
+                            [10, 20, 30, 50, 100].map(pageSize => (
+                                <option key={pageSize} value={pageSize}>
+                                    {pageSize}
+                                </option>
+                            ))
+                        }
+                    </select>
+                </div>
+
+                <div>
+                    <div className="p-1 w-full dark:text-white flex gap-x-2">
+                        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage} className="font-black text-iBankingDarkGreen p-2">&#10094;</button>
+                        <button onClick={() => previousPage()} disabled={!canPreviousPage} className="font-black" >{pageIndex + 1}</button>
+                        <button onClick={() => {nextPage()}} disabled={!canNextPage} className={`${pageIndex >= pageOptions.length - 1 ? "text-transparent invisible" : 'p-1 px-3 text-iBankingDarkGreen hover:border border-iBankingLightGreen'}`}>{pageIndex + 2}</button>
+                        {/*  */}
+                        <button onClick={() => gotoPage(pageOptions.length - 1)} disabled={!canNextPage} className="font-black text-iBankingDarkGreen p-2">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+
+            {/* <p className="px-1 hidden">
+                <span className="bg-red p-1 border">{pageIndex + 1}</span>
+                of
+                <span className="bg-red p-1 border">{pageOptions.length}</span>
+            </p> */}
+
         </div>
     );
 };

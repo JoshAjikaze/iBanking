@@ -41,7 +41,7 @@ interface CommandBarProps {
 export const CommandBar: FunctionComponent<CommandBarProps> = (
     { creationUrl, viewUrl, editUrl, activationAction, deactivateAction }) => {
     return (
-        <section className="mt-2 p-2 bg-white w-full dark:bg-gray-900 text-iBankingGreen dark:text-white flex justify-between">
+        <section className="mt-2 p-1 bg-white w-full dark:bg-gray-900 text-iBankingGreen dark:text-white flex justify-between">
             <Link to={creationUrl}><BtnComponent name="Create" image={create} /></Link>
             <Link to={viewUrl}><BtnComponent name="View" image={view} /></Link>
             <Link to={editUrl}><BtnComponent name="Edit" image={edit} /></Link>
@@ -56,7 +56,7 @@ export const CommandBar: FunctionComponent<CommandBarProps> = (
 
 function BtnComponent(props: any) {
     return (
-        <button className="p-1 text-iBankingGreen dark:text-white text-xl font-light flex gap-3 items-center justify-center hover:bg-sky-500">
+        <button className="p-1 text-iBankingGreen dark:text-white text-base hover:scale-105 hover:border duration-300 ease-in-out font-light flex gap-3 items-center justify-center">
             {/* icon span */}
             <span>
                 <img src={props.image} alt="" />

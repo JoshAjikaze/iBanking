@@ -9,8 +9,12 @@ import search from "../../../app-icons/search.svg";
 import database from "../../../app-icons/database.svg";
 import ellipsis from "../../../app-icons/ellipsis.svg";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../app-redux/store";
+import { showSearch } from "../../../app-redux/togglers/searchToggler";
 
 export const ComponentHeader = (props: any) => {
+
     const name = "Page";
     return (
         <section className="mt-3 bg-white w-full dark:bg-gray-900 dark:shadow-lg p-2 divide-x-2 divide-iBankingGreen grid grid-cols-2 lg:grid-cols-3 text-iBankingGreen dark:text-white">
@@ -36,10 +40,14 @@ interface CommandBarProps {
     editUrl: string,
     deactivateAction: any,
     activationAction: any,
+    searchAction: any,
 }
 
 export const CommandBar: FunctionComponent<CommandBarProps> = (
-    { creationUrl, viewUrl, editUrl, activationAction, deactivateAction }) => {
+    { creationUrl, viewUrl, editUrl, activationAction, deactivateAction, searchAction }) => {
+
+    const dispatch = useDispatch()
+
     return (
         <section className="mt-2 p-1 bg-white w-full dark:bg-gray-900 text-iBankingGreen dark:text-white flex justify-between">
             <Link to={creationUrl}><BtnComponent name="Create" image={create} /></Link>
@@ -55,6 +63,7 @@ export const CommandBar: FunctionComponent<CommandBarProps> = (
 };
 
 function BtnComponent(props: any) {
+
     return (
         <button className="p-1 text-iBankingGreen dark:text-white text-base hover:scale-105 hover:border duration-300 ease-in-out font-light flex gap-3 items-center justify-center">
             {/* icon span */}

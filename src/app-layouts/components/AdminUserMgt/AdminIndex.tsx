@@ -96,7 +96,7 @@ const AdminIndex = () => {
 
             <div className="flex items-center justify-between bg-[#477e5b98]">
                 <div className="pl-3">
-                    <select value={pageSize} onChange={e => setPageSize(Number(e.target.value))} className="bg-transparent font-bold">
+                    <select value={pageSize} onChange={e => setPageSize(Number(e.target.value))} className="bg-transparent font-semibold text-xs">
                         {
                             [10, 20, 30, 50, 100].map(pageSize => (
                                 <option key={pageSize} value={pageSize}>

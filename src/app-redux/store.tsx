@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterSlice from './togglers/sidebarToggler'
+import searchSlice from './togglers/searchToggler'
 
 export const store = configureStore({
     reducer: {
         counter: counterSlice.reducer,
+        searchBar: searchSlice.reducer
     },
 })
 

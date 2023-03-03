@@ -6,7 +6,7 @@ import account_black from '../../app-icons/account_circle_black.svg'
 
 const Header = () => {
     const [toggleMenu, setToggleMenu] = useState<boolean>(false)
-    console.log(toggleMenu, 'Toggle Menu State')
+    // console.log(toggleMenu, 'Toggle Menu State')
     const [darkMode, setDarkMode] = useState<boolean | undefined>(undefined);
 
     const switchMode = () => {

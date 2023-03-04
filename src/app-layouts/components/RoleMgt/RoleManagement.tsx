@@ -1,16 +1,18 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../../app-redux/store'
-import { hideSearch, showSearch } from '../../../app-redux/togglers/searchToggler'
+import { Outlet } from "react-router-dom"
+import { CommandBar, ComponentHeader } from "../sharedComponents/ComponentHeader"
+console.log(window.location.pathname)
 
 const RoleManagement = () => {
-  const dispatch = useDispatch()
   
   return (
-    <div>
-      <button onClick={() => { dispatch(showSearch()) }}>Click Me</button>
-      <button onClick={() => { dispatch(hideSearch()) }}>Click Me2</button>
-    </div>
+    <section className="relative w-full min-h-screen p-1 pt-16 md:p-3 md:pt-12 lg:p-16 bg-iBankingBgLight dark:bg-gray-800">
+      <ComponentHeader name="Role Management" />
+      <CommandBar creationUrl={""} viewUrl={""} editUrl={""} deactivateAction={undefined} activationAction={undefined} searchAction={undefined} />
+      <div className="w-full min-h-[20vh] bg-white dark:bg-gray-900 mt-10">
+        <Outlet />
+        <p>Let's meet  later</p>
+      </div>
+    </section>
   )
 }
 

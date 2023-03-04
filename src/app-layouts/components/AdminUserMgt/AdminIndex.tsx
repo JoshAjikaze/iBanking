@@ -111,18 +111,12 @@ const AdminIndex = () => {
                     <div className="p-1 w-full dark:text-white flex gap-x-2">
                         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage} className="font-black text-iBankingDarkGreen p-2">&#10094;</button>
                         <button onClick={() => previousPage()} disabled={!canPreviousPage} className="font-black" >{pageIndex + 1}</button>
-                        <button onClick={() => {nextPage()}} disabled={!canNextPage} className={`${pageIndex >= pageOptions.length - 1 ? "text-transparent invisible" : 'p-1 px-3 text-iBankingDarkGreen hover:border border-iBankingLightGreen'}`}>{pageIndex + 2}</button>
+                        <button onClick={() => {nextPage()}} disabled={!canNextPage} className={`${pageIndex >= pageOptions.length - 1 ? "text-transparent invisible" : 'p-1 px-3 text-iBankingDarkGreen dark:text-iBankingLightGreen font-semibold hover:border border-iBankingLightGreen'}`}>{pageIndex + 2}</button>
                         {/*  */}
                         <button onClick={() => gotoPage(pageOptions.length - 1)} disabled={!canNextPage} className="font-black text-iBankingDarkGreen p-2">&#10095;</button>
                     </div>
                 </div>
             </div>
-
-            {/* <p className="px-1 hidden">
-                <span className="bg-red p-1 border">{pageIndex + 1}</span>
-                of
-                <span className="bg-red p-1 border">{pageOptions.length}</span>
-            </p> */}
 
         </div>
     );

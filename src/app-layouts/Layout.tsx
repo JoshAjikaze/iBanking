@@ -14,6 +14,7 @@ import AdminCreate from './components/AdminUserMgt/AdminCreate'
 import AdminEdit from './components/AdminUserMgt/AdminEdit'
 import AdminView from './components/AdminUserMgt/AdminView'
 import AdminIndex from './components/AdminUserMgt/AdminIndex'
+import RoleManagement from './components/RoleMgt/RoleManagement'
 
 const Layout = (props: any) => {
   const [sidebarToggle, setSidebarToggle] = useState(false);
@@ -79,7 +80,7 @@ const Layout = (props: any) => {
             <Route path="view" element={<AdminView />} />
             <Route path="edit" element={<AdminEdit />} />
           </Route>
-          {/* <Route path="/about" element={<AboutPage />} /> */}
+          <Route path="role" element={<RoleManagement />} />
           <Route path="*" element={
             <div className='text-3xl text-center font-bold'>
               <p className='flex'>

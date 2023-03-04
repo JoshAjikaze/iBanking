@@ -17,7 +17,7 @@ const LinkTemp = (props: any) => {
     const toggle = useSelector((state: RootState) => state.counter.value)
     return (
         <Link
-        className="group flex items-center p-1 px-3 text-white text-xs font-normal gap-x-4 delay-100 duration-500 hover:bg-iBankingGreen dark:hover:bg-gray-800 active:border focus:outline-none active:outline-none focus:border-r-8"
+            className={`group flex items-center p-1 px-3 text-white text-xs font-normal gap-x-4 delay-100 duration-500 hover:bg-iBankingGreen dark:hover:bg-gray-800 active:border focus:outline-none active:outline-none focus:border-r-8`}
         to={props.link}
         >
             <img src={props.image} alt="imagegfc" className={` ${ toggle ? "ml-2" : ""} w-4 h-4`} />

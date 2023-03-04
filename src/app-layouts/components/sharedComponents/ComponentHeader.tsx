@@ -47,6 +47,7 @@ export const CommandBar: FunctionComponent<CommandBarProps> = (
     { creationUrl, viewUrl, editUrl, activationAction, deactivateAction, searchAction }) => {
 
     const dispatch = useDispatch()
+    console.log(searchAction)
 
     return (
         <section className="mt-2 p-1 bg-white w-full dark:bg-gray-900 text-iBankingGreen dark:text-white flex justify-between">
@@ -55,7 +56,7 @@ export const CommandBar: FunctionComponent<CommandBarProps> = (
             <Link to={editUrl}><BtnComponent name="Edit" image={edit} /></Link>
             <BtnComponent name="Activate" image={activate} />
             <BtnComponent name="Deactivate" image={deactivate} />
-            <BtnComponent image={search} />
+            <BtnComponent image={search} onclick={searchAction} />
             <BtnComponent image={database} />
             <BtnComponent image={ellipsis} />
         </section>
@@ -65,8 +66,8 @@ export const CommandBar: FunctionComponent<CommandBarProps> = (
 function BtnComponent(props: any) {
 
     return (
-        <button className="p-1 text-iBankingGreen dark:text-white text-base hover:scale-105 hover:border duration-300 ease-in-out font-light flex gap-3 items-center justify-center">
-            {/* icon span */}
+        <button onClick={props.onclick} className="p-1 text-iBankingGreen dark:text-white text-base hover:scale-105 hover:border duration-300 ease-in-out font-light flex gap-3 items-center justify-center">
+                {/* icon span */}
             <span>
                 <img src={props.image} alt="" />
             </span>

@@ -14,7 +14,11 @@ export const searchSlice = createSlice({
   initialState,
   reducers: {
     showSearch: (state) => {
-      state.value = true
+      if (state.value === false) {
+        state.value = true
+      } else {
+        state.value = false
+      }
     },
     hideSearch: (state) => {
       state.value = false
@@ -24,7 +28,7 @@ export const searchSlice = createSlice({
 
 
 // Action creators are generated for each case reducer function
-export const { showSearch, hideSearch} = searchSlice.actions
+export const { showSearch, hideSearch } = searchSlice.actions
 
 
 export default searchSlice
